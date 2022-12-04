@@ -98,10 +98,8 @@ function curve_stack_3x3_xy(x, y, xsize = 256, ysize = 256, d = 1, seed = 0, sof
 
 
 var stack_octaves = 1
-function cell_noise_xy(x, y, xsize = 256, ysize = 256, density = 4, octaves = 2, amplitude_ratio = 1/2, softness = 1, samples = 4, bias = 0, range = 1 ) {
+function cell_noise_xy(x, y, xsize = 256, ysize = 256, density = 4, seed = 0,octaves = 2, amplitude_ratio = 1/2, softness = 1, samples = 4, bias = 0, range = 1 ) {
     let surface = 0
-    // to make this seedable like the other noise functions, we can get an initial seed from noise_seed, then get a series of octave seeds from that
-    let seed = noise_seed
     for (let a = 0; a < octaves; a ++) {
         let octave_seed = noise_table[seed % nt_size] // inline prime cycle
         seed += pc_increment
